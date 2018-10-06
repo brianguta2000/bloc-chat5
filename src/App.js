@@ -5,16 +5,18 @@ import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
 import User from './components/User';
 
+  
   // Initialize Firebase
   var config = {
-    apiKey: "AIzaSyCMQJkCwEauA-Wl7ma3StPEqX39uOcL7-A",
-    authDomain: "bloc-chat-react-2121.firebaseapp.com",
-    databaseURL: "https://bloc-chat-react-2121.firebaseio.com",
-    projectId: "bloc-chat-react-2121",
-    storageBucket: "bloc-chat-react-2121.appspot.com",
-    messagingSenderId: "111946694590"
+    apiKey: "AIzaSyDWn4jF8gxu7VBDv0OTgYxPJ4cdSB-fGr0",
+    authDomain: "bloc-chat-82224.firebaseapp.com",
+    databaseURL: "https://bloc-chat-82224.firebaseio.com",
+    projectId: "bloc-chat-82224",
+    storageBucket: "bloc-chat-82224.appspot.com",
+    messagingSenderId: "631783572544"
   };
   firebase.initializeApp(config);
+
 
 
 class App extends Component {
@@ -46,6 +48,13 @@ class App extends Component {
   }
 
 
+  formatTime(timestamp) {
+    // Converts the seconds given by UNIX timestamp to milliseconds for Date object
+    let date = new Date (timestamp);
+    let fTime = date.toLocaleTimeString('en-US');
+    return fTime;
+  }
+
   render() {
     return (
       <div className="container-fluid h-100">
@@ -63,6 +72,8 @@ class App extends Component {
           <MessageList
           firebase={firebase}
           activeRoom={this.state.activeRoom}
+          user={this.state.user}
+          formatTime={this.formatTime}
           />
         </div>
       </div>
